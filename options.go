@@ -10,6 +10,7 @@ type ZipFileStruct struct {
 	SourceFile string
 	DestFile   string
 	Path       string
+	Filename   string
 	IsCreate   bool
 }
 
@@ -19,6 +20,7 @@ func SetFlag(ZipFileFlag *ZipFileStruct) {
 	flag.StringVar(&ZipFileFlag.DestFile, "dest", "output.zip", "Output Zip File.")
 	flag.StringVar(&ZipFileFlag.SourceFile, "source", "", "Source Zip File.")
 	flag.StringVar(&ZipFileFlag.Path, "path", "", "File Path. e.g. ..//")
+	flag.StringVar(&ZipFileFlag.Filename, "filename", "", "Filename")
 	if len(os.Args) < 2 {
 		ShowBanner()
 		os.Args = append(os.Args, "-h")

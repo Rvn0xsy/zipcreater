@@ -36,7 +36,7 @@ func CreateZipFile(DestFile string, SourceFile string, Path string) {
 }
 
 // Zip ...
-func Zip(srcFile string, destZip string, pathDest string) error {
+func Zip(srcFile string, destZip string, pathDest string, filename string) error {
 	zipfile, err := os.Create(destZip)
 	if err != nil {
 		return err
@@ -59,8 +59,8 @@ func Zip(srcFile string, destZip string, pathDest string) error {
 		header.Name = strings.TrimPrefix(path, filepath.Dir(srcFile)+"/")
 		// header.Name = path
 
-		if strings.Contains(header.Name, "shell.jsp") {
-			header.Name = strings.ReplaceAll(header.Name, "shell.jsp", pathDest)
+		if strings.Contains(header.Name, filename) {
+			header.Name = strings.ReplaceAll(header.Name, filename, pathDest)
 		}
 		if strings.Contains(header.Name, "../") || strings.Contains(header.Name, "..\\") {
 			header.Method = zip.Deflate
